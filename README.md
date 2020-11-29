@@ -1,6 +1,6 @@
-#Simple Library CRUD application
+# Simple Library CRUD application
 
-This is a spring boot application with an H2 backing database.
+This is a spring boot application with an H2 backing database. By using an H2 database I was able to just let spring/hibernate handle most of the work, I just configured it a bit.
 
 I assumed JSON would be a good response format.
 
@@ -9,16 +9,15 @@ I assumed JSON would be a good response format.
 https://github.com/bradchamberlain/cd_library
 ```
 
-By using an H2 database I was able to just let spring/hibernate handle most of the work, I just configured it a bit.
-The database should be setup and included.  
-If not, you'll need to uncomment these lines in the application.properties file and then start the application.
+***Database Configuration***
+The database should be setup and included.  If not, you'll need to uncomment these lines in the application.properties file and then re-start the application.
 ```
 #spring.jpa.hibernate.ddl-auto=create-drop
 #spring.datasource.initialization-mode=always
 ```
-This will create the table and initialize a few records.
-If you leave those lines in the application,then your database will be wiped clean on 
+This will create the table and initialize a few records.  If you leave those lines in the application,then your database will be wiped clean on 
 every restart so I usually build it once to get it fresh then remove those lines. 
+
 ***How to build***
 ```
 ./mvnw package
@@ -33,17 +32,17 @@ every restart so I usually build it once to get it fresh then remove those lines
 ```
 http://localhost:8080/h2-console/
 ```
-* Never, ever, check in a file that contains a password value like I did here.  This should be done in an environment variable.
-* Never, never, ever use password as a password
+* ***Never***, ever, check in a file that contains a password value like I did here.  This should be done in an environment variable.
+* ***Never***, ***never***, ever use "password" as a password
 
-##Sample Requests
+## Sample Requests
 
-Get a list of all books in library:
+*Get a list of all books in library:*
 ```
 GET: http://localhost:8080/api/v1/books
 ```
 
-Create new book:
+*Create new book:*
 ```
 POST: http://localhost:8080/api/v1/books
 Headers: 
@@ -58,12 +57,12 @@ Body:
     }
 ```
 
-Get a book:
+*Get a book:*
 ```
 GET: http://localhost:8080/api/v1/books/{{book_id}}
 ```
 
-Update existing book:
+*Update existing book:*
 ```
 PUT: http://localhost:8080/api/v1/books/{{book_id}}
 Headers: 
@@ -77,8 +76,7 @@ Body:
     }
 ```
 
-Delete book:
+*Delete book:*
 ```
 http://localhost:8080/api/v1/books/{{book_id}}
 ```
-
