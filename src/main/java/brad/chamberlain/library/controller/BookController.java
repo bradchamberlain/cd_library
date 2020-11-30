@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Simple Spring boot controller to handle CRUD requests for my book library.
+ */
 @RestController
 @RequestMapping("/api/v1")
 public class BookController {
