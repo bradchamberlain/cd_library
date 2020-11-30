@@ -13,10 +13,9 @@ Your application does not have to be fully functional, just spend around an hour
 
 ***System Requirements***
 
-Java 14
-maven
-
-*Helpful to have postman or some other tool for calling API's.
+* Java 14
+* maven
+* Postman or some other tool for calling API's or CLI curl.
 
 ***Where to get the source***
 ```
