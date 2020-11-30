@@ -4,7 +4,7 @@ This is a spring boot application with an H2 backing database. By using an H2 da
 
 I assumed JSON would be a good response format.
 
-***Project Requirements***
+***Project Specification***
 
 Using Java, write a minimal library API that can perform the following functions:
 List all books in the library
