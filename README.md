@@ -4,6 +4,18 @@ This is a spring boot application with an H2 backing database. By using an H2 da
 
 I assumed JSON would be a good response format.
 
+***Project Requirements***
+Using Java, write a minimal library API that can perform the following functions:
+List all books in the library
+CRUD operations on a single book
+Your application does not have to be fully functional, just spend around an hour or two and send it over once it’s completed. We generally allow a week to complete this because we know that you have other obligations in your life.
+
+***System Requirements***
+Java 14
+maven
+
+*Helpful to have postman or some other tool for calling API's.
+
 ***Where to get the source***
 ```
 https://github.com/bradchamberlain/cd_library
