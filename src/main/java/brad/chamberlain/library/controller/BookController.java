@@ -18,7 +18,8 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/v1")
-public class BookController {
+public class BookController
+{
     @Autowired
     private BookRepository bookRepository;
 
@@ -29,21 +30,24 @@ public class BookController {
 
     @GetMapping("/books/{id}")
     public ResponseEntity< Book > getBookById(@PathVariable(value = "id") Long bookId)
-            throws BookNotFoundException{
+            throws BookNotFoundException
+    {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new BookNotFoundException(bookId));
         return ResponseEntity.ok().body(book);
     }
 
     @PostMapping("/books")
-    public Book createBook(@Valid @RequestBody Book book) {
+    public Book createBook(@Valid @RequestBody Book book)
+    {
         return bookRepository.save(book);
     }
 
     @PutMapping("/books/{id}")
     public ResponseEntity < Book > updateBook(@PathVariable(value = "id") Long bookId,
                                                       @Valid @RequestBody Book bookDetails)
-            throws BookNotFoundException {
+            throws BookNotFoundException
+    {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new BookNotFoundException(bookId));
 
@@ -56,7 +60,8 @@ public class BookController {
 
     @DeleteMapping("/books/{id}")
     public Map< String, Boolean > deleteBook(@PathVariable(value = "id") Long bookId)
-            throws BookNotFoundException {
+            throws BookNotFoundException
+    {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new BookNotFoundException(bookId));
 

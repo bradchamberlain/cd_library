@@ -13,7 +13,8 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/books")
-public class BookHtmlController {
+public class BookHtmlController
+{
 
     @Autowired
     private BookRepository bookRepository;
@@ -60,7 +61,8 @@ public class BookHtmlController {
     @PostMapping("/{id}/update")
     public String updateBook(@PathVariable("id") long bookId, @Valid Book book,
                              BindingResult result, Model model)
-            throws BookNotFoundException {
+            throws BookNotFoundException
+    {
         if (result.hasErrors()) {
             book.setId(bookId);
             model.addAttribute("book", book);
@@ -71,7 +73,9 @@ public class BookHtmlController {
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteBook(@PathVariable("id") long bookId, Model model) throws BookNotFoundException {
+    public String deleteBook(@PathVariable("id") long bookId, Model model)
+            throws BookNotFoundException
+    {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new BookNotFoundException(bookId));
         bookRepository.delete(book);
@@ -80,8 +84,10 @@ public class BookHtmlController {
     }
 
     private void setBookModelAttribute(@PathVariable("id") Long bookId, Model model)
-            throws BookNotFoundException {
-        if (!model.containsAttribute("book")) {
+            throws BookNotFoundException
+    {
+        if (!model.containsAttribute("book"))
+        {
             Book book = bookRepository.findById(bookId)
                     .orElseThrow(() -> new BookNotFoundException(bookId));
             model.addAttribute("book", book);

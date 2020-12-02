@@ -2,6 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
     <div th:fragment="header">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.1/css/bootstrap.min.css} "/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <style>
             .header {
               background-color: #222222;
@@ -10,9 +14,7 @@
             }
             </style>
         <h1 class="header">Welcome to the Library</h1>
-        <p th:text="${#dates.formatISO(standardDate)}"></p>
     </div>
-
     <div th:fragment="footer">
         <style>
             .footer {
@@ -24,9 +26,13 @@
               color: white;
               text-align: center;
             }
+            .current_year {
+                float:right;
+            }
             </style>
         <div class="footer">
             @Author:  Brad Chamberlain
+            <span class="current_year" th:text="${#dates.year(#dates.createNow())}">Year</span>
         </div>
     </div>
 </body>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+    <head lang="en">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
     <body>
         <div th:insert="header_footer.html :: header"></div>
-        <form action="#" th:action="@{/books/new}" th:object="${book}" method="post">
+        <form action="#" th:action="@{/books/new}"
+              th:object="${book}"
+              method="post">
             <div th:insert="/books/form.html :: book_form(book)"></div>
             <input type="submit" value="Add Book">
         </form>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <div th:insert="header_footer.html :: header"></div>
-    <form action="#"
-          th:action="@{/books/{id}/update(id=${book.id})}"
-          th:object="${book}"
-          method="post">
-        <div th:insert="/books/form.html :: book_form(book)"></div>
-        <input type="submit" value="Update Book">
-    </form>
-    <a th:href="@{/books/{id}/delete(id=${book.id})}">Delete</a>
-    <div th:insert="header_footer.html :: footer"></div>
-</body>
+    <head lang="en">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <div th:insert="header_footer.html :: header"></div>
+        <form action="#"
+              th:action="@{/books/{id}/update(id=${book.id})}"
+              th:object="${book}"
+              method="post">
+            <div th:insert="/books/form.html :: book_form(book)"></div>
+            <input type="submit" value="Update Book">
+        </form>
+        <a th:href="@{/books/{id}/delete(id=${book.id})}">Delete</a>
+        <div th:insert="header_footer.html :: footer"></div>
+    </body>
 </html>
