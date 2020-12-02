@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="book_form(book)">
+
+    <label for="title">Title</label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Title">
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    <br/>
+    <label for="author">Author</label>
+    <input type="text" th:field="*{author}" id="author" placeholder="Author">
+    <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+    <br />
+    <lable for="pages">Pages</lable>
+    <input type="text" th:field="*{pages}" id="pages" placeholder="Pages">
+    <span th:if="${#fields.hasErrors('pages')}" th:errors="*{pages}"></span>
+    <br />
+</div>
+</body>
+</html>

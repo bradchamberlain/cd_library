@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="header">
+        <style>
+            .header {
+              background-color: #222222;
+              color: white;
+              text-align: center;
+            }
+            </style>
+        <h1 class="header">Welcome to the Library</h1>
+        <p th:text="${#dates.formatISO(standardDate)}"></p>
+    </div>
+
+    <div th:fragment="footer">
+        <style>
+            .footer {
+              position: fixed;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              background-color: #222222;
+              color: white;
+              text-align: center;
+            }
+            </style>
+        <div class="footer">
+            @Author:  Brad Chamberlain
+        </div>
+    </div>
+</body>
+</html>
