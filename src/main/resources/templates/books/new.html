@@ -4,20 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
     <body>
+        <div th:insert="header_footer.html :: header"></div>
         <form action="#" th:action="@{/books/new}" th:object="${book}" method="post">
-            <label for="Title">Title</label>
-            <input type="text" th:field="*{title}" id="title" placeholder="Title">
-            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
-            <br />
-            <label for="author">Author</label>
-            <input type="text" th:field="*{author}" id="author" placeholder="Author">
-            <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
-            <br />
-            <label for="pages">Pages</label>
-            <input type="text" th:field="*{pages}" id="pages" placeholder="Pages">
-            <span th:if="${#fields.hasErrors('pages')}" th:errors="*{pages}"></span>
-            <br />
+            <div th:insert="/books/form.html :: book_form(book)"></div>
             <input type="submit" value="Add Book">
         </form>
+        <div th:insert="header_footer.html :: footer"></div>
     </body>
 </html>

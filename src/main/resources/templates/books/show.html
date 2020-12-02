@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+    <div th:insert="header_footer.html :: header"></div>
     <table>
         <tr>
             <td th:text="${book.title}">Title</td>
@@ -12,5 +13,6 @@
             <td><a th:href="@{/books}">Back</a> </td>
         </tr>
     </table>
+    <div th:insert="header_footer.html :: footer"></div>
 </body>
 </html>
