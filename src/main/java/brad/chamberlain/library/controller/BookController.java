@@ -1,5 +1,6 @@
 package brad.chamberlain.library.controller;
 
+import brad.chamberlain.library.exceptions.BookNotFoundException;
 import brad.chamberlain.library.model.Book;
 import brad.chamberlain.library.model.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class BookController {
 
     @GetMapping("/books/{id}")
     public ResponseEntity< Book > getBookById(@PathVariable(value = "id") Long bookId)
-            throws ResourceNotFoundException{
+            throws BookNotFoundException{
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResourceNotFoundException(bookId));
+                .orElseThrow(() -> new BookNotFoundException(bookId));
         return ResponseEntity.ok().body(book);
     }
 
@@ -42,9 +43,9 @@ public class BookController {
     @PutMapping("/books/{id}")
     public ResponseEntity < Book > updateBook(@PathVariable(value = "id") Long bookId,
                                                       @Valid @RequestBody Book bookDetails)
-            throws ResourceNotFoundException {
+            throws BookNotFoundException {
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResourceNotFoundException(bookId));
+                .orElseThrow(() -> new BookNotFoundException(bookId));
 
         book.setTitle(bookDetails.getTitle());
         book.setAuthor(bookDetails.getAuthor());
@@ -55,23 +56,13 @@ public class BookController {
 
     @DeleteMapping("/books/{id}")
     public Map< String, Boolean > deleteBook(@PathVariable(value = "id") Long bookId)
-            throws ResourceNotFoundException {
+            throws BookNotFoundException {
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResourceNotFoundException(bookId));
+                .orElseThrow(() -> new BookNotFoundException(bookId));
 
         bookRepository.delete(book);
         Map < String, Boolean > response = new HashMap< >();
         response.put("deleted", Boolean.TRUE);
         return response;
-    }
-
-    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    public class ResourceNotFoundException extends Exception{
-
-        private static final long serialVersionUID = 1L;
-
-        public ResourceNotFoundException(long id){
-            super("Book not found for this id :: " + id);
-        }
     }
 }
